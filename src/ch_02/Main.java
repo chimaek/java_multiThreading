@@ -12,7 +12,7 @@ public class Main {
                 System.out.println("우선순위 : " + Thread.currentThread().getPriority());
               }
             });
-    thread.setPriority(Thread.MAX_PRIORITY); // 우선순위를 높게 설정
+//    thread.setPriority(Thread.MAX_PRIORITY); // 우선순위를 높게 설정
     thread.setName("새로운 스레드");
     System.out.println("현재 스레드는" + Thread.currentThread().getName() + "입니다.");
     thread.start();
