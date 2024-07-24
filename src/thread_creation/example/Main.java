@@ -1,4 +1,4 @@
-package ch_02;
+package thread_creation.example;
 
 public class Main {
 
