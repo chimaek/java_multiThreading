@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main3 {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
 
     List<Long> inputNumbers =
         List.of(0L, 3435L, 35435L, 2324L, 4656L, 23L, 2435L, 5566L, 7324L, 3999L);
@@ -17,6 +17,9 @@ public class Main3 {
 
     for (Thread thread : threads) {
       thread.start();
+    }
+    for (Thread thread : threads) {
+      thread.join();
     }
 
     for (int i = 0; i < inputNumbers.size(); i++) {
