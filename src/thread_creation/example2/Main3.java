@@ -8,7 +8,7 @@ public class Main3 {
   public static void main(String[] args) throws InterruptedException {
 
     List<Long> inputNumbers =
-        List.of(0L, 3435L, 35435L, 2324L, 4656L, 23L, 2435L, 5566L, 7324L, 3999L);
+        List.of(111111111110L, 3435L, 35435L, 2324L, 4656L, 23L, 2435L, 5566L, 7324L, 3999L);
 
     List<FactorialThread> threads = new ArrayList<>();
     for (long inputNumber : inputNumbers) {
@@ -16,10 +16,11 @@ public class Main3 {
     }
 
     for (Thread thread : threads) {
+      thread.setDaemon(true);
       thread.start();
     }
     for (Thread thread : threads) {
-      thread.join();
+      thread.join(2000);
     }
 
     for (int i = 0; i < inputNumbers.size(); i++) {
