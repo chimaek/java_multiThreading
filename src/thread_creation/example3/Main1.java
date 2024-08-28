@@ -18,15 +18,13 @@ public class Main1 {
         new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
 
     long startTime = System.currentTimeMillis();
-//    recolorSingleThreaded(read, write);
+    //    recolorSingleThreaded(read, write);
     recolorMultiThreaded(read, write, 4);
     long endTime = System.currentTimeMillis();
 
     System.out.println("Image processing took " + (endTime - startTime) + " milliseconds");
     File outputFile = new File(DESTINATION_FILE);
     ImageIO.write(write, "jpg", outputFile);
-
-
   }
 
   public static void recolorMultiThreaded(
@@ -50,7 +48,7 @@ public class Main1 {
       threads.add(thread);
     }
 
-    for(Thread thread : threads) {
+    for (Thread thread : threads) {
       thread.start();
     }
 
