@@ -27,6 +27,7 @@ public class Main1 {
     ImageIO.write(write, "jpg", outputFile);
   }
 
+  // 해당 메서드는 이미지를 처리하는데 시간이 오래 걸리기 때문에 멀티스레드로 처리하는 것이 좋다.
   public static void recolorMultiThreaded(
       BufferedImage read, BufferedImage write, int numberOfThreads) {
     ArrayList<Thread> threads = new ArrayList<>();
@@ -61,10 +62,12 @@ public class Main1 {
     }
   }
 
+  //
   public static void recolorSingleThreaded(BufferedImage read, BufferedImage write) {
     recolorImage(read, write, 0, 0, read.getWidth(), read.getHeight());
   }
 
+  // 해당 메서드는 이미지의 픽셀을 색칠하는 메서드이다.
   public static void recolorImage(
       BufferedImage read,
       BufferedImage write,
@@ -79,6 +82,7 @@ public class Main1 {
     }
   }
 
+  // 해당 메서드는 픽셀의 색을 변경하는 메서드이다.
   public static void recolorPixel(BufferedImage read, BufferedImage write, int x, int y) {
     int rgb = read.getRGB(x, y);
 
@@ -104,18 +108,21 @@ public class Main1 {
     write.getRaster().setDataElements(x, y, write.getColorModel().getDataElements(newRGB, null));
   }
 
+  // 해당 메서드는 픽셀의 색을 변경하는 메서드이다.
   public static int getBlue(int rgb) {
     return rgb & 0x000000FF;
   }
 
+  // 해당 메서드는 픽셀의 색을 변경하는 메서드이다.
   public static int getGreen(int rgb) {
     return (rgb & 0x0000FF00) >> 8;
   }
 
+  //  해당 메서드는 픽셀의 색을 변경하는 메서드이다.
   public static int getRed(int rgb) {
     return (rgb & 0x00FF0000) >> 16;
   }
-
+  // 해당 메서드는 새로 생성된 RGB를 반환하는 메서드이다.
   public static int createRGBFromColors(int red, int green, int blue) {
     int rgb = 0;
     rgb |= blue;
@@ -124,7 +131,7 @@ public class Main1 {
     rgb |= 0xFF000000;
     return rgb;
   }
-
+  // 해당 메서드는 회색 이미지인지 확인하는 메서드이다.
   public static boolean isSharedOfGray(int red, int green, int blue) {
     return Math.abs(red - green) < 30 && Math.abs(red - blue) < 30 && Math.abs(green - blue) < 30;
   }
