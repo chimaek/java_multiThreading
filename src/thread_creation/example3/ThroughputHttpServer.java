@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+//
 public class ThroughputHttpServer {
   private static final String inputFile = "resources/war_and_peace.txt";
   private static final int numThreads = 1;
@@ -18,7 +19,7 @@ public class ThroughputHttpServer {
 
     startServer(text);
   }
-
+  // 이 메서드는 HttpServer를 생성하고, /search 경로에 대한 요청을 처리하는 WordCountHandler를 등록한다.
   private static void startServer(String text) throws IOException {
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
     server.createContext("/search", new WordCountHandler(text));
