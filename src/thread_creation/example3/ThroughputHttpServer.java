@@ -11,8 +11,8 @@ import java.util.concurrent.Executors;
 
 //
 public class ThroughputHttpServer {
-  private static final String inputFile = "resources/war_and_peace.txt";
-  private static final int numThreads = 1;
+  private static final String inputFile = "src/thread_creation/example3/resources/war_and_peace.txt";
+  private static final int numThreads = 2;
 
   public static void main(String[] args) throws IOException {
     String text = new String(Files.readAllBytes(Paths.get(inputFile)));
@@ -32,11 +32,13 @@ public class ThroughputHttpServer {
 
     @Override
     public void handle(com.sun.net.httpserver.HttpExchange exchange) throws IOException {
+      // query 파라미터를 파싱한다.
       String query = exchange.getRequestURI().getQuery();
       String[] keyValue = query.split("=");
+
       String action = keyValue[0];
       String value = keyValue[1];
-
+      // action이 word가 아니면 400 Bad Request를 반환한다.
       if (!action.equals("word")) {
         exchange.sendResponseHeaders(400, 0);
         exchange.close();
@@ -53,7 +55,7 @@ public class ThroughputHttpServer {
     private long countWord(String word) {
       long count = 0;
       int index = 0;
-
+      // text에서 word를 찾아서 count를 증가시킨다.
       while (index >= 0) {
         index = text.indexOf(word, index);
         if (index >= 0) {
