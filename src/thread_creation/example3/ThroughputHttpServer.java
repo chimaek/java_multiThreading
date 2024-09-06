@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-
 public class ThroughputHttpServer {
   private static final String inputFile = "src/thread_creation/example3/resources/war_and_peace.txt";
   private static final int numThreads = 2;
