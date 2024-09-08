@@ -10,8 +10,8 @@ public class Main2 {
     incrementing.start();
     decrementing.start();
 
-    incrementing.join();
-    decrementing.join();
+//    incrementing.join();
+//    decrementing.join();
 
     System.out.println(
         "The number of items in the inventory is " + inventoryCounter.getItems() + " items");
